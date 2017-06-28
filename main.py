@@ -1,6 +1,8 @@
 from spy_details import spy, Spy, ChatMessage, friends
 from steganography.steganography import Steganography
 from datetime import datetime
+from termcolor import colored
+
 STATUS_MESSAGES = ["My name is Bond, James Bond", "Shaken, not stirred"]
 
 print "Hello! Let's get started"
@@ -116,9 +118,9 @@ def start_chat(spy):
         else:
             print"Invalid choice"
 
-if choice.upper() == "Y": #Defult user
+if choice.upper() == "Y":        #Defult user
     start_chat(spy)
-elif choice.upper() == "N": #New user
+elif choice.upper() == "N":      #New user
     spy = Spy('','',0,0.0)
     spy.name = raw_input("Welcome to spy chat, you must tell me your spy name first: ")
     if len(spy.name) > 0:
