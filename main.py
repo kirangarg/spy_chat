@@ -1,7 +1,7 @@
 from spy_details import spy, Spy, ChatMessage, friends
 from steganography.steganography import Steganography
 from datetime import datetime
-from termcolor import colored
+from colorama import init
 
 STATUS_MESSAGES = ["My name is Bond, James Bond", "Shaken, not stirred"]
 
