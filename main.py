@@ -71,7 +71,7 @@ def send_message():
         friends[friend_choice].chats.append(new_chat)
         print "Your secret message image is ready!"
     else:
-        print "please provide text"
+        print "Please provide text!"
 
 
 def read_message():
@@ -116,9 +116,9 @@ def start_chat(spy):
         else:
             print"Invalid choice"
 
-if choice.upper() == "Y":
+if choice.upper() == "Y": #Defult user
     start_chat(spy)
-elif choice.upper() == "N":
+elif choice.upper() == "N": #New user
     spy = Spy('','',0,0.0)
     spy.name = raw_input("Welcome to spy chat, you must tell me your spy name first: ")
     if len(spy.name) > 0:
@@ -135,15 +135,15 @@ elif choice.upper() == "N":
         print"Hi " +spy.salutation+" "+ spy.name + " I want to know more about you"
         spy.age = int(raw_input("What is your age?"))
         if (spy.age >= 12 and spy.age <= 50):
-            spy.rating = float(raw_input("what is your spy rating"))
+            spy.rating = float(raw_input("What is your spy rating"))
             if (spy.rating >= 4.5):
-                print"great ace!"
+                print"Great ace!"
             elif (spy.rating >= 3.5 and spy.rating <= 4.5):
-                print "you are good one spy"
+                print "You are good one spy"
             elif (spy.rating >= 2.5 and spy.rating <= 3.5):
-                print "you can always do better"
+                print "You can always do better"
             else:
-                print "we provider helper to you in the office"
+                print "We provider helper to you in the office"
             start_chat(spy)
         else:
             print"Sorry you are not of valid age to be a spy"
