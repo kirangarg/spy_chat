@@ -1,6 +1,7 @@
 from spy_details import spy, Spy, ChatMessage, friends
 from steganography.steganography import Steganography
 from datetime import datetime
+from termcolor import *
 from colorama import init
 
 STATUS_MESSAGES = ["My name is Bond, James Bond", "Shaken, not stirred"]
@@ -68,10 +69,13 @@ def send_message():
     output_path = "output.jpg"
     text = raw_input("What do you want to say? ")
     if len(text) > 0 and len(text) <= 100:
-        Steganography.encode(original_image, output_path, text)
-        new_chat = ChatMessage(text,True)
-        friends[friend_choice].chats.append(new_chat)
-        print "Your secret message image is ready!"
+        if text.upper()== "SOS" or text.upper() == "SAVE ME":
+            print "PLease provide help"
+        else:
+            Steganography.encode(original_image, output_path, text)
+            new_chat = ChatMessage(text,True)
+            friends[friend_choice].chats.append(new_chat)
+            print "Your secret message image is ready!"
     elif len(text) > 100:
         print"don't speak too much"
         del friends[friend_choice]
@@ -90,13 +94,14 @@ def read_message():
 
 
 def read_chat_history():
+
     read_for = select_a_friend()
     print "\n6"
     for chat in friends[read_for].chats:
         if chat.sent_by_me:
-            print "[%s] %s: %s" % (chat.time.strftime("%d %B %Y"), "You said:", chat.message)
+            print "[%s] %s: %s" % (chat.time.strftime("%d %B %Y"), "You said :", chat.message)
         else:
-            print "[%s] %s said: %s" % (chat.time.strftime("%d %B %Y"), friends[read_for].name, chat.message)
+            print "[%s] %s said: %s" % (chat.time.strftime("%d %B %Y"),friends[read_for].name, chat.message)
 
 
 def start_chat(spy):
